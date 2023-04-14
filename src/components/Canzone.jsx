@@ -11,7 +11,7 @@ const Canzone = ({ song }) => {
         <a href="#i">
           Track: {song.title} <br />
         </a>
-        <Link to={`/artist/${song.album.id}`}>Album: {song.album.title}</Link>
+        <Link to={`/album/${song.album.id}`}>Album: {song.album.title}</Link>
       </p>
     </Col>
   );
