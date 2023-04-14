@@ -52,7 +52,7 @@ const Main = () => {
             <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3" id="rockSection">
               {rockSongs.length > 0 && (
                 <>
-                  {rockSongs.map(song => (
+                  {rockSongs.slice(0, 4).map(song => (
                     <Col key={song.id} className="text-center" id="id">
                       <Song song={song} />
                     </Col>
@@ -71,7 +71,7 @@ const Main = () => {
             <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3" id="popSection">
               {popSongs.length > 0 && (
                 <>
-                  {popSongs.map(song => (
+                  {popSongs.slice(0, 4).map(song => (
                     <Col key={song.id} className="text-center" id="id">
                       <Song song={song} />
                     </Col>
@@ -90,7 +90,7 @@ const Main = () => {
             <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3" id="hipHopSection">
               {hipHopSongs.length > 0 && (
                 <>
-                  {hipHopSongs.map(song => (
+                  {hipHopSongs.slice(0, 4).map(song => (
                     <Col key={song.id} className="text-center" id="id">
                       <Song song={song} />
                     </Col>
