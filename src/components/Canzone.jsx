@@ -8,10 +8,12 @@ const Canzone = ({ song }) => {
         <Image fluid src={song.album.cover_medium} alt={song.title} />
       </a>
       <p>
-        <a href="#i">
+        <a className="text-decoration-none" href="#i">
           Track: {song.title} <br />
         </a>
-        <Link to={`/album/${song.album.id}`}>Album: {song.album.title}</Link>
+        <Link className="text-decoration-none" to={`/album/${song.album.id}`}>
+          Album: {song.album.title}
+        </Link>
       </p>
     </Col>
   );

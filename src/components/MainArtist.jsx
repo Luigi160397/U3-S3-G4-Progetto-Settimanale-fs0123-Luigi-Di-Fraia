@@ -33,13 +33,13 @@ const MainArtist = () => {
         <Row>
           <Col className="col-12 col-md-10 col-lg-10 mt-5">
             <h2 className="titleMain">{artist[0].artist.name}</h2>
-            <div id="followers">{artist[0].rank}</div>
+            <div id="followers">{artist[0].rank} riproduzioni</div>
 
             <div className="d-flex justify-content-center" id="button-container">
-              <Button className="btn btn-success mr-2 mainButton d-none" id="playButton">
+              <Button className="btn btn-success me-2 mainButton " id="playButton">
                 PLAY
               </Button>
-              <Button className="btn btn-outline-light mainButton d-none" id="followButton">
+              <Button className="btn btn-outline-light mainButton " id="followButton">
                 FOLLOW
               </Button>
             </div>
