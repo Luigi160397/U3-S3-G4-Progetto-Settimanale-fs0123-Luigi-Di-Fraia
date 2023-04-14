@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 const Canzone = ({ song }) => {
   return (
     <Col className="col-sm-auto col-md-auto text-center mb-5">
-      <Link to={`/album/${song.id}`}>
+      <a href="#i">
         <Image fluid src={song.album.cover_medium} alt={song.title} />
-      </Link>
+      </a>
       <p>
-        <Link to={`/album/${song.album.id}`}>
+        <a href="#i">
           Track: {song.title} <br />
-        </Link>
+        </a>
         <Link to={`/artist/${song.album.id}`}>Album: {song.album.title}</Link>
       </p>
     </Col>
