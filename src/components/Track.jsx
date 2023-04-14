@@ -1,12 +1,12 @@
-const Tracks = () => {
+const Tracks = ({ song }) => {
   return (
     <>
       <div className="py-3 trackHover">
         <a href="#i" className="card-title trackHover px-3" style={{ color: "white" }}>
-          track.title
+          {song.title}
         </a>
         <small className="duration" style={{ color: "white" }}>
-          3.14
+          {Math.floor(song.duration / 60)}:{(song.duration % 60).toString().padStart(2, "0")}
         </small>
       </div>
     </>

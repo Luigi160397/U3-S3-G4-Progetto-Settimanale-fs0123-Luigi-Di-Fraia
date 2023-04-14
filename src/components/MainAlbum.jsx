@@ -29,23 +29,33 @@ const MainAlbum = () => {
       </Row>
       <Row>
         <Col md={3} className="pt-5 text-center" id="img-container">
-          <img src={album.cover} className="card-img img-fluid" alt="Album" />
-          <div className="mt-4 text-center">
-            <p className="album-title">{album.title}</p>
-          </div>
-          <div className="text-center">
-            <p className="artist-name">{album.artist.name}</p>
-          </div>
-          <div className="mt-4 text-center">
-            <button id="btnPlay" className="btn btn-success" type="button">
-              Play
-            </button>
-          </div>
+          {album && (
+            <>
+              <img src={album.cover} className="card-img img-fluid" alt="Album" />
+              <div className="mt-4 text-center">
+                <p className="album-title">{album.title}</p>
+              </div>
+              <div className="text-center">
+                <p className="artist-name">{album.artist.name}</p>
+              </div>
+              <div className="mt-4 text-center">
+                <button id="btnPlay" className="btn btn-success" type="button">
+                  Play
+                </button>
+              </div>
+            </>
+          )}
         </Col>
         <Col md={8} className="p-5">
           <Row>
             <Col md={10} className="mb-5" id="trackList">
-              <Tracks />
+              {album && (
+                <>
+                  {album.tracks.data.map(song => (
+                    <Tracks key={song.id} song={song} />
+                  ))}
+                </>
+              )}
             </Col>
           </Row>
         </Col>
