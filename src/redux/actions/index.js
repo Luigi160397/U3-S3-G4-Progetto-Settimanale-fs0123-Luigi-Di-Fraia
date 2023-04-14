@@ -5,6 +5,7 @@ export const GET_QUERY = "GET_QUERY";
 export const GET_SEARCH = "GET_SEARCH";
 export const RESET_SEARCH = "RESET_SEARCH";
 export const GET_ALBUM = "GET_ALBUM";
+export const GET_ARTIST = "GET_ARTIST";
 
 export const getQueryAction = query => ({ type: GET_QUERY, payload: query });
 export const resetSearchAction = () => ({ type: RESET_SEARCH, payload: [] });
@@ -77,6 +78,21 @@ export const getAlbumAction = url => {
         let data = await resp.json();
 
         dispatch({ type: GET_ALBUM, payload: data });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getArtistAction = url => {
+  return async dispatch => {
+    try {
+      let resp = await fetch(url);
+      if (resp.ok) {
+        let data = await resp.json();
+
+        dispatch({ type: GET_ARTIST, payload: data.data });
       }
     } catch (error) {
       console.log(error);

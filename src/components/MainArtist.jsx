@@ -1,9 +1,21 @@
+import { useEffect } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
+import { getArtistAction } from "../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const MainArtist = () => {
   const params = useParams();
-  const artistEndpoint = `https://striveschool-api.herokuapp.com/api/deezer/artist/${params.id}`;
+  const dispatch = useDispatch();
+  const artistEndpoint = `https://striveschool-api.herokuapp.com/api/deezer/artist/${params.id}/top?limit=50`;
+
+  useEffect(() => {
+    dispatch(getArtistAction(artistEndpoint));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const artist = useSelector(state => state.artist.artist);
+  console.log(artist);
 
   return (
     <>
@@ -19,8 +31,9 @@ const MainArtist = () => {
 
       <Row>
         <Col className="col-12 col-md-10 col-lg-10 mt-5">
-          <h2 className="titleMain">titolo</h2>
+          <h2 className="titleMain">{artist[0].artist.name}</h2>
           <div id="followers"></div>
+
           <div className="d-flex justify-content-center" id="button-container">
             <Button className="btn btn-success mr-2 mainButton d-none" id="playButton">
               PLAY
