@@ -16,6 +16,7 @@ export const getSearchAction = url => {
       let resp = await fetch(url);
       if (resp.ok) {
         let songs = await resp.json();
+        songs.data.sort(() => Math.random() - 0.5);
 
         dispatch({ type: GET_SEARCH, payload: songs.data });
       }
@@ -31,6 +32,7 @@ export const getRockAction = url => {
       let resp = await fetch(url);
       if (resp.ok) {
         let songs = await resp.json();
+        songs.data.sort(() => Math.random() - 0.5);
 
         dispatch({ type: GET_ROCK, payload: songs.data });
       }
@@ -46,6 +48,7 @@ export const getPopAction = url => {
       let resp = await fetch(url);
       if (resp.ok) {
         let songs = await resp.json();
+        songs.data.sort(() => Math.random() - 0.5);
 
         dispatch({ type: GET_POP, payload: songs.data });
       }
@@ -61,6 +64,7 @@ export const getHipHopAction = url => {
       let resp = await fetch(url);
       if (resp.ok) {
         let songs = await resp.json();
+        songs.data.sort(() => Math.random() - 0.5);
 
         dispatch({ type: GET_HIP_HOP, payload: songs.data });
       }
@@ -91,7 +95,7 @@ export const getArtistAction = url => {
       let resp = await fetch(url);
       if (resp.ok) {
         let data = await resp.json();
-
+        data.data.sort(() => Math.random() - 0.5);
         dispatch({ type: GET_ARTIST, payload: data.data });
       }
     } catch (error) {
