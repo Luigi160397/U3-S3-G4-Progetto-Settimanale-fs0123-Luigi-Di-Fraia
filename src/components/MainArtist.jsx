@@ -3,6 +3,7 @@ import { Button, Col, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { getArtistAction } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import Canzone from "./Canzone";
 
 const MainArtist = () => {
   const params = useParams();
@@ -15,7 +16,6 @@ const MainArtist = () => {
   }, []);
 
   const artist = useSelector(state => state.artist.artist);
-  console.log(artist);
 
   return (
     <>
@@ -29,21 +29,23 @@ const MainArtist = () => {
         </Col>
       </Row>
 
-      <Row>
-        <Col className="col-12 col-md-10 col-lg-10 mt-5">
-          <h2 className="titleMain">{artist[0].artist.name}</h2>
-          <div id="followers"></div>
+      {artist.length > 0 && (
+        <Row>
+          <Col className="col-12 col-md-10 col-lg-10 mt-5">
+            <h2 className="titleMain">{artist[0].artist.name}</h2>
+            <div id="followers">{artist[0].rank}</div>
 
-          <div className="d-flex justify-content-center" id="button-container">
-            <Button className="btn btn-success mr-2 mainButton d-none" id="playButton">
-              PLAY
-            </Button>
-            <Button className="btn btn-outline-light mainButton d-none" id="followButton">
-              FOLLOW
-            </Button>
-          </div>
-        </Col>
-      </Row>
+            <div className="d-flex justify-content-center" id="button-container">
+              <Button className="btn btn-success mr-2 mainButton d-none" id="playButton">
+                PLAY
+              </Button>
+              <Button className="btn btn-outline-light mainButton d-none" id="followButton">
+                FOLLOW
+              </Button>
+            </div>
+          </Col>
+        </Row>
+      )}
 
       <Row className="mb-3">
         <Col className="col-10 offset-1 col-md-10 col-lg-10 p-0">
@@ -51,7 +53,13 @@ const MainArtist = () => {
             <h2 className="text-white font-weight-bold">Tracks</h2>
           </div>
           <div className="pt-5 mb-5">
-            <Row id="apiLoaded"></Row>
+            {artist.length > 0 && (
+              <Row id="apiLoaded">
+                {artist.map(song => (
+                  <Canzone key={song.id} song={song} />
+                ))}
+              </Row>
+            )}
           </div>
         </Col>
       </Row>
