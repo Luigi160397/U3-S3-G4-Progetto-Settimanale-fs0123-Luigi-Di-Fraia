@@ -12,6 +12,7 @@ const MainAlbum = () => {
 
   useEffect(() => {
     dispatch(getAlbumAction(albumEndpoint));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const album = useSelector(state => state.album.album);
