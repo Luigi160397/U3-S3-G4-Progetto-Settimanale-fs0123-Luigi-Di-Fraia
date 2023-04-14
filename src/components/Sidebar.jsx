@@ -3,7 +3,7 @@ import spotifyLogo from "../logo/Spotify_Logo.png";
 import { FaHome, FaBookOpen } from "react-icons/fa";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getQueryAction } from "../redux/actions";
+import { getQueryAction, resetSearchAction } from "../redux/actions";
 
 const Sidebar = () => {
   const [query, setQuery] = useState("");
@@ -18,7 +18,7 @@ const Sidebar = () => {
   return (
     <nav className="navbar navbar-expand-md navbar-white bg-navbar fixed-left justify-content-between" id="sidebar">
       <div className="nav-container">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/" onClick={() => dispatch(resetSearchAction())}>
           <img src={spotifyLogo} alt="Spotify_Logo" width={131} height={40} />
         </Link>
         <button
@@ -36,7 +36,7 @@ const Sidebar = () => {
           <div className="navbar-nav">
             <ul className="pt-3">
               <li>
-                <Link className="nav-item nav-link" to="/">
+                <Link className="nav-item nav-link" to="/" onClick={() => dispatch(resetSearchAction())}>
                   <FaHome className="fs-4" />
                   &nbsp; Home
                 </Link>

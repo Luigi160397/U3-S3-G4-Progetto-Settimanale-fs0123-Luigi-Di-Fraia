@@ -40,24 +40,24 @@ const Main = () => {
         </Col>
       </Row>
 
-      <Row>
-        <Col xs={10}>
-          <div id="searchResults">
-            <h2>Search Results</h2>
-            <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3">
-              {searchSongs.length > 0 && (
-                <>
+      {searchSongs.length > 0 && (
+        <>
+          <Row>
+            <Col xs={10}>
+              <div id="searchResults">
+                <h2>Search Results</h2>
+                <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3">
                   {searchSongs.map(song => (
                     <Col key={song.id} className="text-center" id="id">
                       <Song song={song} />
                     </Col>
                   ))}
-                </>
-              )}
-            </Row>
-          </div>
-        </Col>
-      </Row>
+                </Row>
+              </div>
+            </Col>
+          </Row>
+        </>
+      )}
 
       <Row>
         <Col xs={10}>
