@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import spotifyLogo from "../logo/Spotify_Logo.png";
 import { FaHome, FaBookOpen } from "react-icons/fa";
 import { useState } from "react";
@@ -8,6 +8,7 @@ import { getQueryAction, resetSearchAction } from "../redux/actions";
 const Sidebar = () => {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const search = e => {
     e.preventDefault();
@@ -47,25 +48,27 @@ const Sidebar = () => {
                   &nbsp; Your Library
                 </Link>
               </li>
-              <li>
-                <form className="input-group mt-3" onSubmit={search}>
-                  <input
-                    type="text"
-                    className="form-control mb-2"
-                    id="searchField"
-                    placeholder="Search"
-                    aria-label="Search"
-                    aria-describedby="basic-addon2"
-                    value={query}
-                    onChange={e => setQuery(e.target.value)}
-                  />
-                  <div className="input-group-append" style={{ marginBottom: "4%" }}>
-                    <button className="btn btn-outline-secondary" type="submit" id="button-addon1">
-                      GO
-                    </button>
-                  </div>
-                </form>
-              </li>
+              {location.pathname === "/" && (
+                <li>
+                  <form className="input-group mt-3" onSubmit={search}>
+                    <input
+                      type="text"
+                      className="form-control mb-2"
+                      id="searchField"
+                      placeholder="Search"
+                      aria-label="Search"
+                      aria-describedby="basic-addon2"
+                      value={query}
+                      onChange={e => setQuery(e.target.value)}
+                    />
+                    <div className="input-group-append" style={{ marginBottom: "4%" }}>
+                      <button className="btn btn-outline-secondary" type="submit" id="button-addon1">
+                        GO
+                      </button>
+                    </div>
+                  </form>
+                </li>
+              )}
             </ul>
           </div>
         </div>
