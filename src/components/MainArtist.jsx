@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 const MainArtist = () => {
   const params = useParams();
   const artistEndpoint = `https://striveschool-api.herokuapp.com/api/deezer/artist/${params.id}`;
+
   return (
     <>
       <Row className="mb-3">
