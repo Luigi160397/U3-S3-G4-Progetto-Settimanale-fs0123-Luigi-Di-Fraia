@@ -5,10 +5,10 @@ const Song = ({ song }) => {
   return (
     <>
       <Link to={`/album/${song.album.id}`}>
-        <Image fluid src={song.album.cover_medium} alt="1" />
+        <Image fluid src={song.album.cover_medium} alt={song.album.title} />
       </Link>
       <p>
-        <Link to="/album_page.html?id=songInfo.album.id">
+        <Link to={`/album/${song.album.id}`}>
           Album: {song.album.title} <br />
         </Link>
         <Link to={`/artist/${song.artist.id}`}>Artist: {song.artist.name}</Link>
