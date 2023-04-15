@@ -1,7 +1,11 @@
+import { useDispatch } from "react-redux";
+import { getSelectedSong } from "../redux/actions";
+
 const Tracks = ({ song }) => {
+  const dispatch = useDispatch();
   return (
     <>
-      <div className="py-3 trackHover">
+      <div className="py-3 trackHover" onClick={() => dispatch(getSelectedSong(song))}>
         <a href="#i" className="card-title trackHover px-3" style={{ color: "white" }}>
           {song.title}
         </a>

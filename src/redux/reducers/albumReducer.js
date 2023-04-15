@@ -1,7 +1,8 @@
-import { GET_ALBUM } from "../actions";
+import { GET_ALBUM, GET_SELECTED } from "../actions";
 
 const initialState = {
-  album: null
+  album: null,
+  selectedSong: null
 };
 
 const albumReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const albumReducer = (state = initialState, action) => {
       return {
         ...state,
         album: action.payload
+      };
+    case GET_SELECTED:
+      return {
+        ...state,
+        selectedSong: action.payload
       };
     default:
       return state;

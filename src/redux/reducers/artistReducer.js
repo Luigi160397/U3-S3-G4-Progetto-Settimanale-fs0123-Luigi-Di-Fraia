@@ -1,7 +1,8 @@
-import { GET_ARTIST } from "../actions";
+import { GET_ARTIST, GET_SELECTED } from "../actions";
 
 const initialState = {
-  artist: []
+  artist: [],
+  selectedSong: null
 };
 
 const artistReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const artistReducer = (state = initialState, action) => {
       return {
         ...state,
         artist: action.payload
+      };
+    case GET_SELECTED:
+      return {
+        ...state,
+        selectedSong: action.payload
       };
     default:
       return state;
