@@ -17,7 +17,7 @@ const Player = () => {
           <Row>
             {selectedSong && (
               <Col xs={2} className="text-center d-flex py-auto align-items-center">
-                <Image id="playerImg" src={selectedSong.album.cover_medium} width={100} height={100} alt="song cover" />
+                <Image id="playerImg" src={selectedSong.album.cover_medium} width={80} height={80} alt="song cover" />
                 <h5 className="text-light fs-6 ps-2">{selectedSong.title_short}</h5>
               </Col>
             )}
