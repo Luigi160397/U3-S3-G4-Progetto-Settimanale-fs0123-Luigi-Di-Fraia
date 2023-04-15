@@ -1,4 +1,13 @@
-import { GET_HIP_HOP, GET_POP, GET_QUERY, GET_ROCK, GET_SEARCH, GET_SELECTED, RESET_SEARCH } from "../actions";
+import {
+  GET_FAVOURITE,
+  GET_HIP_HOP,
+  GET_POP,
+  GET_QUERY,
+  GET_ROCK,
+  GET_SEARCH,
+  GET_SELECTED,
+  RESET_SEARCH
+} from "../actions";
 
 const initialState = {
   rock: [],
@@ -6,7 +15,8 @@ const initialState = {
   hiphop: [],
   query: "",
   search: [],
-  selectedSong: null
+  selectedSong: null,
+  favourite: []
 };
 
 const homeReducer = (state = initialState, action) => {
@@ -45,6 +55,11 @@ const homeReducer = (state = initialState, action) => {
       return {
         ...state,
         selectedSong: action.payload
+      };
+    case GET_FAVOURITE:
+      return {
+        ...state,
+        favourite: [...state.favourite, action.payload]
       };
     default:
       return state;

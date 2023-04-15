@@ -7,10 +7,12 @@ export const RESET_SEARCH = "RESET_SEARCH";
 export const GET_ALBUM = "GET_ALBUM";
 export const GET_ARTIST = "GET_ARTIST";
 export const GET_SELECTED = "GET_SELECTED";
+export const GET_FAVOURITE = "GET_FAVOURITE";
 
 export const getQueryAction = query => ({ type: GET_QUERY, payload: query });
 export const resetSearchAction = () => ({ type: RESET_SEARCH, payload: [] });
 export const getSelectedSong = song => ({ type: GET_SELECTED, payload: song });
+export const getFavouriteAction = song => ({ type: GET_FAVOURITE, payload: song });
 
 export const getSearchAction = url => {
   return async dispatch => {

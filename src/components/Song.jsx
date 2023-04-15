@@ -1,10 +1,13 @@
-import { Image } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { Button, Image } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getSelectedSong } from "../redux/actions";
+import { getFavouriteAction, getSelectedSong } from "../redux/actions";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const Song = ({ song }) => {
   const dispatch = useDispatch();
+  const favourite = useSelector(state => state.home.favourite);
+  const isFavourite = favourite.some(favSong => favSong.id === song.id);
 
   return (
     <>
@@ -17,8 +20,16 @@ const Song = ({ song }) => {
           Album: {song.album.title} <br />
         </Link>
         <Link className="text-decoration-none" to={`/artist/${song.artist.id}`}>
-          Artist: {song.artist.name}
+          Artist: {song.artist.name}{" "}
         </Link>
+        <Button
+          onClick={() => dispatch(getFavouriteAction(song))}
+          size="sm"
+          variant="outline-secondary"
+          className="px-2 py-1 pb-2"
+        >
+          {isFavourite ? <FaHeart /> : <FaRegHeart />}
+        </Button>
       </p>
     </>
   );
